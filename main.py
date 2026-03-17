@@ -2,33 +2,34 @@ import cv2
 import torch
 import numpy as np
 
-# 打印 PyTorch 版本，确认深度学习库就绪
+# Print PyTorch version to confirm the deep learning library is ready
 print(f"PyTorch Version: {torch.__version__}")
 
-# 调用 Mac 的默认摄像头
+# Initialize the default webcam (0 is usually the built-in Mac camera)
 cap = cv2.VideoCapture(0)
 
 if not cap.isOpened():
-    print("Error: 无法打开摄像头，请检查 Mac 的隐私权限设置。")
+    print("Error: Cannot open webcam. Please check your Mac's privacy settings.")
     exit()
 
-print("摄像头已启动！请在弹出的画面窗口中按 'q' 键退出。")
+print("Webcam successfully launched! Press 'q' in the video window to quit.")
 
 while True:
-    # 逐帧读取画面
+    # Read the video frame by frame
     ret, frame = cap.read()
 
     if not ret:
         print("Error: 无法读取画面帧。")
         break
 
-    # 在屏幕上弹窗显示这一帧画面
+    # Display the resulting frame in a window
     cv2.imshow('Robotic Sorting - Camera Test', frame)
 
-    # 监听键盘输入，按 'q' 打破循环
+    # Wait for 1 millisecond, and check if the 'q' key is pressed to break the loop
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 
-# 释放摄像头资源并关闭所有窗口
+# When everything is done, release the capture and close windows
 cap.release()
 cv2.destroyAllWindows()
+cv2.waitKey(1)
