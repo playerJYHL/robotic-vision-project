@@ -1,0 +1,14 @@
+.idea/
+
+__pycache__/
+*.pyc
+
+venv/
+miniconda3/
+env/
+
+
+dataset/
+
+*.pt
+*.pth
