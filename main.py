@@ -19,7 +19,7 @@ while True:
     ret, frame = cap.read()
 
     if not ret:
-        print("Error: 无法读取画面帧。")
+        print("Error: Failed to grab frame.")
         break
 
     # Display the resulting frame in a window
